@@ -24,6 +24,7 @@ import parser from 'ua-parser-js';
 import UserLogModel from '../models/userLogModel.js';
 import EmailModel from '../models/emailTokenModel.js';
 import { createToken } from '../util/jwt.js';
+import ServerAgent from'../agent.ts';//entidad - import agent
 
 const loginController = {
   authenticateUser() {
@@ -242,6 +243,13 @@ const loginController = {
       }
     };
   },
+  digitalCredentialInvite() { //entidad - agent invite handler
+    return async (req, res) => {
+        const agent=ServerAgent.getInstance();
+        const data=await agent.invite();
+        return res.status(200).send(data);
+    };
+  }
 };
 
 async function sendMissingInvitations(user) {

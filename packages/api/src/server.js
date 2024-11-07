@@ -178,6 +178,7 @@ import productRoute from './routes/productRoute.js';
 import notificationUserRoute from './routes/notificationUserRoute.js';
 import timeNotificationRoute from './routes/timeNotificationRoute.js';
 import sensorRoute from './routes/sensorRoute.js';
+import ServerAgent from'./agent.ts';//entidad - import agent
 
 // register API
 const router = promiseRouter();
@@ -366,6 +367,7 @@ if (
   app.listen(port, () => {
     // eslint-disable-next-line no-console
     logger.info('LiteFarm Backend listening on port ' + port);
+    ServerAgent.getInstance();//entidad - initialize agent
   });
 }
 
