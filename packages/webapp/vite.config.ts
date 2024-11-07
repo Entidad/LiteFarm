@@ -32,6 +32,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
     }),
   ],
+  optimizeDeps: {
+    include: ['@mui/material/Tooltip', '@emotion/styled'],
+  },
   build: {
     sourcemap: true,
   },
