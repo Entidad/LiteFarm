@@ -21,6 +21,7 @@ export default function PureCustomSignUp({
   onSubmit,
   disabled,
   GoogleLoginButton,
+  DigitalCredentialConnectButton,//entidad
   classes,
   isChrome,
   errorMessage,
@@ -46,6 +47,12 @@ export default function PureCustomSignUp({
               )}
             </div>
           )}
+          <div data-cy="continueDigitalCredentialConnect" className={styles.ssoButton}>
+            {DigitalCredentialConnectButton}
+          </div>
+          <div className={styles.lineBreak}>
+            <LineBreak />
+          </div>
 
           <div data-cy="continueGoogle" className={styles.ssoButton}>
             {GoogleLoginButton}

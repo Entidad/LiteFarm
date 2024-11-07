@@ -157,10 +157,22 @@ export function* sendResetPasswordEmailSaga({ payload: email }) {
     }
   }
 }
+export const digitalCredentialConnect = createAction(`digitalCredentialConnect`);//entidad
+export function* digitalCredentialConnectSaga({ payload: data }) {//entidad
+      history.push(
+        {
+          pathname: '/',
+        },
+        {
+          component: DIGITAL_CREDENTIAL_CONNECT_PAGE
+        },
+      );
+}
 
 export default function* signUpSaga() {
   yield takeLeading(customSignUp.type, customSignUpSaga);
   yield takeLeading(customLoginWithPassword.type, customLoginWithPasswordSaga);
   yield takeLeading(customCreateUser.type, customCreateUserSaga);
   yield takeLeading(sendResetPasswordEmail.type, sendResetPasswordEmailSaga);
+  yield takeLeading(digitalCredentialConnect.type, digitalCredentialConnectSaga);//entidad
 }

@@ -12,6 +12,7 @@ import history from '../../history';
 import Spinner from '../../components/Spinner';
 import { useTranslation } from 'react-i18next';
 import GoogleLoginButton from '../GoogleLoginButton';
+import DigitalCredentialConnectButton from '../DigitalCredentialConnectButton';//entidad
 import {
   CREATE_USER_ACCOUNT,
   CUSTOM_SIGN_UP,
@@ -52,8 +53,9 @@ function CustomSignUp() {
   const [showResetModal, setShowResetModal] = useState(false);
   const disabled = !email || !validEmailRegex.test(email);
   const showPureEnterPasswordPage = componentToShow === ENTER_PASSWORD_PAGE;
+  const showPureDigitalCredentialConnectPage = componentToShow === DIGITAL_CREDENTIAL_CONNECT_PAGE;//entidad
   const showPureCreateUserAccount = componentToShow === CREATE_USER_ACCOUNT;
-  const showPureCustomSignUp = !showPureCreateUserAccount && !showPureEnterPasswordPage;
+  const showPureCustomSignUp = !showPureCreateUserAccount && !showPureEnterPasswordPage && !showPureDigitalCredentialConnectPage ;//entidad
   const { t, i18n, ready } = useTranslation(['translation', 'common'], { useSuspense: false });
 
   const customSignUpErrorKey = useSelector(customSignUpErrorKeySelector);
@@ -160,6 +162,12 @@ function CustomSignUp() {
             onSignUp={onSignUp}
             onGoBack={createUserAccountOnGoBack}
             email={submittedEmail}
+          />
+        </Hidden>
+        <Hidden isVisible={showPureDigitalCredentialConnectPage}>
+          <PureDigitalCredentialConnectPage
+            title={"entidad"}
+            onGoBack={digitalCredentialConnectPOnGoBack}
           />
         </Hidden>
       </Suspense>
